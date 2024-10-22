@@ -6,9 +6,18 @@ import PreactApp from "./components/PreactApp.js";
 const PORT = process.env.PORT || 9001;
 const HOST = process.env.HOST || "localhost";
 
-uWS
+const app = uWS
   .App()
-  .addServerName(HOST, {})
+  .missingServerName((hostname) => {
+    /* Note: You don't have to use this callback but can pre-load
+     * relevant server names up front. This callback is not "async",
+     * you either add the server name HERE IMMEDIATELY, or the hangshake
+     * will continue with default certificate (which will most likely fail) */
+
+    console.log("Hello! We are missing server name <" + hostname + ">");
+
+    app.addServerName(HOST, {});
+  })
   .get("/*", async (res, req) => {
     res.onAborted(() => {
       res.aborted = true;

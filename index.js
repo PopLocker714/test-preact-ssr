@@ -25,10 +25,12 @@ async function someAsyncTask(headers) {
   return delay(500, res);
 }
 
-const port = 9001;
+const PORT = process.env.PORT || 9001;
+const HOST = process.env.HOST || "localhost";
 
 uWS
-  ./*SSL*/ App({})
+  ./*SSL*/ App()
+  .addServerName(HOST, {})
   .get("/*", async (res, req) => {
     /* Can't return or yield from here without responding or attaching an abort handler */
     res.onAborted(() => {
@@ -54,10 +56,10 @@ uWS
       });
     }
   })
-  .listen(port, (token) => {
+  .listen(PORT, (token) => {
     if (token) {
-      console.log("Listening to port " + port);
+      console.log("Listening to port " + PORT);
     } else {
-      console.log("Failed to listen to port " + port);
+      console.log("Failed to listen to port " + PORT);
     }
   });

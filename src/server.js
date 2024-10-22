@@ -3,10 +3,12 @@ import render from "preact-render-to-string";
 import { html } from "htm/preact";
 import PreactApp from "./components/PreactApp.js";
 
-const port = 9001;
+const PORT = process.env.PORT || 9001;
+const HOST = process.env.HOST || "localhost";
 
 uWS
-  .App({})
+  .App()
+  .addServerName(HOST, {})
   .get("/*", async (res, req) => {
     res.onAborted(() => {
       res.aborted = true;
@@ -32,10 +34,10 @@ uWS
       });
     }
   })
-  .listen(port, (token) => {
+  .listen(PORT, (token) => {
     if (token) {
-      console.log("Listening to port " + port);
+      console.log("Listening to port " + PORT);
     } else {
-      console.log("Failed to listen to port " + port);
+      console.log("Failed to listen to port " + PORT);
     }
   });

@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --no-warnings=ExperimentalWarning --env-file=dev.env src/server.js"
+    "dev": "nodemon --no-warnings=ExperimentalWarning --env-file=dev.env src/server.js",
+    "prod": "node --env-file=prod.env src/server.js"
   },
   "keywords": [],
   "author": "",

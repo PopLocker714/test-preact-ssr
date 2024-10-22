@@ -1,0 +1,22 @@
+{
+  "name": "test-preact-ssr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --no-warnings=ExperimentalWarning --env-file=dev.env src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "htm": "^3.1.1",
+    "preact": "^10.24.3",
+    "preact-render-to-string": "^6.5.11",
+    "uWebSockets.js": "github:uNetworking/uWebSockets.js#v20.44.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

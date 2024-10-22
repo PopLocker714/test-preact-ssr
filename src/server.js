@@ -3,11 +3,11 @@ import render from "preact-render-to-string";
 import { html } from "htm/preact";
 import PreactApp from "./components/PreactApp.js";
 
-const PORT = process.env.PORT || 9001;
+const PORT = +process.env.PORT || 9001;
 const HOST = process.env.HOST || "localhost";
 
 const app = uWS
-  .App()
+  .App({})
   .missingServerName((hostname) => {
     /* Note: You don't have to use this callback but can pre-load
      * relevant server names up front. This callback is not "async",
